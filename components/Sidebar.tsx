@@ -1,11 +1,13 @@
+import { Suspense } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense } from "react";
 import EditButton from "./EditButton";
 import NoteListSkeleton from "./NoteListSkeleton";
 import SidebarNoteList from "./SidebarNoteList";
 import SidebarSearchField from "./SidebarSearchField";
-import { useTranslations } from "next-intl";
+import SidebarImport from "./SidebarImport";
+import SidebarFooter from "./SidebarFooter";
 
 export default function Sidebar() {
   const t = useTranslations("Basic");
@@ -34,6 +36,8 @@ export default function Sidebar() {
           <SidebarNoteList />
         </Suspense>
       </nav>
+      <SidebarImport />
+      <SidebarFooter />
     </section>
   );
 }

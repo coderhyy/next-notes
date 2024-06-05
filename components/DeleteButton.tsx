@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useFormStatus } from "react-dom";
 
 interface DeleteButtonProps {
@@ -18,10 +19,10 @@ export default function DeleteButton({
         formAction={formAction}
         role="menuitem"
       >
-        <img
+        <Image
           src="/cross.svg"
-          width="10px"
-          height="10px"
+          width="10"
+          height="10"
           alt=""
           role="presentation"
         />

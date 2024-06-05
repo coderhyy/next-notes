@@ -1,5 +1,5 @@
 import NoteEditor from "@/components/NoteEditor";
-import { getNote } from "@/lib/redis";
+import { getNote } from "@/lib/prisma";
 
 interface EditPageProps {
   params: { id: string };
@@ -8,9 +8,6 @@ interface EditPageProps {
 export default async function EditPage({ params }: EditPageProps) {
   const noteId = params.id;
   const note = await getNote(noteId);
-
-  // const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-  // await sleep(2000);
 
   if (!note) {
     return (
@@ -25,8 +22,8 @@ export default async function EditPage({ params }: EditPageProps) {
   return (
     <NoteEditor
       noteId={noteId}
-      initialTitle={note.title}
-      initialBody={note.content}
+      initialTitle={note.title ?? ""}
+      initialBody={note.content ?? ""}
     ></NoteEditor>
   );
 }

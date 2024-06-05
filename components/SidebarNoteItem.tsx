@@ -24,7 +24,7 @@ export default function SidebarNoteItem({
     >
       <header className="sidebar-note-header">
         <strong>{title}</strong>
-        <small>{format(updateTime, "yyyy-MM-dd hh:mm:ss")}</small>
+        <small>{format(updateTime, "yyyy-MM-dd HH:mm:ss")}</small>
       </header>
     </SidebarNoteItemContent>
   );

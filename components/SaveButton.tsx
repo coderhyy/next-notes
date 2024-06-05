@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useFormStatus } from "react-dom";
 
 interface SaveButtonProps {
@@ -14,10 +15,10 @@ export default function SaveButton({ formAction }: SaveButtonProps) {
       disabled={pending}
       role="menuitem"
     >
-      <img
+      <Image
         src="/checkmark.svg"
-        width="14px"
-        height="10px"
+        width="14"
+        height="10"
         alt=""
         role="presentation"
       />

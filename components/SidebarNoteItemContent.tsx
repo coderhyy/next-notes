@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { ReactNode, useEffect, useRef, useState, useTransition } from "react";
 
@@ -78,14 +79,14 @@ export default function SidebarNoteItemContent({
         }}
       >
         {isExpanded ? (
-          <img
+          <Image
             src="/chevron-down.svg"
-            width="10px"
-            height="10px"
+            width="10"
+            height="10"
             alt="Collapse"
           />
         ) : (
-          <img src="/chevron-up.svg" width="10px" height="10px" alt="Expand" />
+          <Image src="/chevron-up.svg" width="10" height="10" alt="Expand" />
         )}
       </button>
       {isExpanded && expandedChildren}

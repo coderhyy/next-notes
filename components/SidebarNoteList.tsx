@@ -1,4 +1,4 @@
-import { getAllNotes } from "@/lib/redis";
+import { getAllNotes } from "@/lib/prisma";
 import SidebarNoteListFilter from "./SidebarNoteListFilter";
 import SidebarNoteItemHeader from "./SidebarNoteItemHeader";
 
@@ -14,7 +14,7 @@ export default async function SidebarNoteList({}: SidebarNoteListProps) {
   return (
     <SidebarNoteListFilter
       notes={Object.entries(notes).map(([noteId, note]) => {
-        const noteData = JSON.parse(note);
+        const noteData = JSON.parse(note as string);
         return {
           noteId,
           note: noteData,

@@ -1,5 +1,5 @@
 import Note from "@/components/Note";
-import { getNote } from "@/lib/redis";
+import { getNote } from "@/lib/prisma";
 
 interface PageProps {
   params: { id: string };
@@ -8,9 +8,6 @@ interface PageProps {
 export default async function Page({ params }: PageProps) {
   const noteId = params.id;
   const note = await getNote(noteId);
-
-  // const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-  // await sleep(2000);
 
   if (!note) {
     return (

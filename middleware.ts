@@ -1,18 +1,30 @@
+import { defaultLocale, localePrefix, locales } from "@/config";
 import createMiddleware from "next-intl/middleware";
-import { locales, defaultLocale } from "@/config";
+import { NextRequest, NextResponse } from "next/server";
 
-export default createMiddleware({
-  // A list of all locales that are supported
+const intlMiddleware = createMiddleware({
   locales,
-
-  // Used when no locale matches
   defaultLocale,
-
-  // 默认语言不重定向
-  localePrefix: "as-needed",
+  localePrefix,
 });
+
+export async function middleware(request: NextRequest) {
+  const response = NextResponse.next();
+
+  // Exclude specific paths from further processing
+  if (
+    !request.nextUrl.pathname.startsWith("/login") &&
+    !request.nextUrl.pathname.startsWith("/api") &&
+    !request.nextUrl.pathname.startsWith("/_next") &&
+    !request.nextUrl.pathname.includes(".")
+  ) {
+    return intlMiddleware(request);
+  }
+  // Return the response object directly
+  return response;
+}
 
 export const config = {
   // Match only internationalized pathnames
-  matcher: ["/", "/(zh|en)/:path*", "/((?!_next|_vercel|.*\\..*).*)"],
+  matcher: ["/", "/(zh|en)/:path*", "/((?!api|_next|_vercel|.*\\..*).*)"],
 };
