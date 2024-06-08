@@ -78,8 +78,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return token;
     },
     async session({ session, token }) {
-      session.user.id = token.userId as string;
+      if (token.userId) {
+        session.user.id = token.userId as string;
+      }
       return session;
+    },
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      else if (new URL(url).origin === baseUrl) return url;
+      if (baseUrl.indexOf(":3000") > -1) return url;
+      return baseUrl;
     },
   },
 });
