@@ -46,18 +46,18 @@ services:
     networks:
       - react-notes-dev
 
-  nginx:
-    image: nginx
-    container_name: next-app-nginx
-    volumes:
-      - ./docker/nginx.conf:/etc/nginx/nginx.conf
-      - ./docker/ssl/notes.coderhyy.space.key:/etc/nginx/ssl/notes.coderhyy.space.key
-      - ./docker/ssl/notes.coderhyy.space.pem:/etc/nginx/ssl/notes.coderhyy.space.pem
-    ports:
-      - 80:80
-      - 443:443
-    restart: always
-    networks:
-      - react-notes-dev
-    depends_on:
-      - next-app-dev
+  # nginx:
+  #   image: nginx
+  #   container_name: next-app-nginx
+  #   volumes:
+  #     - ./docker/nginx.conf:/etc/nginx/nginx.conf
+  #     - ./docker/ssl/notes.coderhyy.space.key:/etc/nginx/ssl/notes.coderhyy.space.key
+  #     - ./docker/ssl/notes.coderhyy.space.pem:/etc/nginx/ssl/notes.coderhyy.space.pem
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   restart: always
+  #   networks:
+  #     - react-notes-dev
+  #   depends_on:
+  #     - next-app-dev

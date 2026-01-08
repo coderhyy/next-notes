@@ -10,7 +10,7 @@
     "prod": "next build && next start"
   },
   "dependencies": {
-    "@prisma/client": "5.14.0",
+    "@prisma/client": "5.22.0",
     "date-fns": "^3.6.0",
     "ioredis": "^5.4.1",
     "marked": "^12.0.2",
@@ -18,7 +18,7 @@
     "next": "14.2.3",
     "next-auth": "5.0.0-beta.18",
     "next-intl": "^3.14.0",
-    "prisma": "^5.14.0",
+    "prisma": "^5.22.0",
     "react": "^18",
     "react-dom": "^18",
     "sanitize-html": "^2.13.0",
